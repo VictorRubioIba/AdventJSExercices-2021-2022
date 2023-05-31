@@ -1,30 +1,25 @@
 function decodeNumber(symbols) {
-    let punto =1
-    let coma = 5
-    let dosPuntos=10
-    let puntComa=50
-    let exclamacion=100
-    let num=0
-    let num2=0
+    const doc = { '.': 1, ',': 5, ':': 10, ';': 50, '!': 100 }
 
-let newArr= symbols.split("")
-let newArr2=[]
-for(let i=0;i<newArr.length;i++){
-newArr2[i]=Number(newArr[i].replace(".",1).replace(",",5).replace(":",10).replace(";",50).replace("!",100))
-}
-for(let j=0;j<newArr2.length-1;j++){
-    if(newArr2[j]>=newArr2[j+1]){
-        num=newArr2[j]+newArr2[j+1]
-    }else{
-        num=newArr2[j+1]-newArr2[j]
-    }
-    num2+=num
-}
+	let chrValue; 
+    let chrNextValue; 
+    let result = 0
 
-console.log(num)
-     return false
+	for (let i = 0; i < symbols.length; i++) {
+		chrValue = doc[symbols.substring(i, i + 1)]
+		if (!chrValue) return NaN
+
+		if (i < symbols.length - 1) {
+			chrNextValue = doc[symbols.substring(i + 1, i + 2)]
+			if (chrValue >= chrNextValue) result += chrValue
+			else if (chrValue < chrNextValue) result -= chrValue
+		} else result += chrValue
+	}
+
+	return result
    }
 
+   
  decodeNumber('...') // 3
 decodeNumber('.,') // 4 (5 - 1)
 decodeNumber(',.') // 6 (5 + 1)
