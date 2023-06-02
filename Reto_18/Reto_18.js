@@ -5,12 +5,10 @@
 
     const findDuplicates = newArr => newArr.filter((item, index) => newArr.indexOf(item) !== index)
     const duplicates = findDuplicates(newArr);
-
-
     duplicates.forEach(element => {
         let num=0
-    for(let i in files){
-        if(element===i){
+    for(let i=0;i<files.length;i++){
+        if(element===files[i]){
             if(num>0){
                 files[i]=files[i]+`(${num})`
             }
@@ -19,8 +17,6 @@
         }
     });
   
-  
-
     console.log(files)
      return files
    }

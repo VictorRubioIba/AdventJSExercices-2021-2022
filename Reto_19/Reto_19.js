@@ -1,36 +1,14 @@
  function learn(time, courses) {
-    // ¡No olvides compartir tu solución en redes!
-
-
-let newArr=[]
-let num=0;
-let num2=0
-
-for(let i=0;i<courses.length;i++){
-
-    for(let j=i+1;j<courses.length;j++){
-        num=courses[i]+courses[j]
-
-        if(num===time){
-            newArr.push(i)
-            newArr.push(j)
-        }else{
-        if(num>num2){
-            newArr.push(i)
-            newArr.push(j)
-
-        }
-        }
-     num=num2
-    }
-}
-
-console.log(newArr.slice(0,2))
-     return newArr
+    let refTime = time; let result = null
+	while (refTime > 0 && result === null) {
+		for (let i = 0; i < courses.length; i++) {
+			const pos = courses.indexOf(refTime - courses[i])
+			if (pos > -1 & pos !== i && result === null) result = [i, pos]
+		}
+		refTime--
+	}
+	return result ? result.sort((a, b) => a - b) : null
    }
-
-
-
 learn(10, [2, 3, 8, 1, 4]) // [0, 2] -> con 10 horas disponibles lo mejor es que completemos los cursos en el índice 0 y 2.
 
 learn(15, [2, 10, 4, 1]) // [1, 2] -> Los cursos en [1, 2] son 14 horas, es la mejor opción.

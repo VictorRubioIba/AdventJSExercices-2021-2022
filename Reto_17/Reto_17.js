@@ -1,7 +1,6 @@
  function countPackages(carriers, carrierID) {
     // ¡No olvides compartir tu solución en redes!
 let numPaquetes=0
-
 let newArr=[]
 
 for(let i=0;i<carriers.length;i++){
@@ -19,6 +18,13 @@ if(newArr.indexOf(carriers[i][0])!=-1){
 }
 
      return numPaquetes
+
+     /*
+     SOLUCIÓN BUENA, LA ANTERIOR NO PASA LOS TESTS
+     const carrier = carriers.find(c => c[0] === carrierID); let result = carrier[1]
+	carrier[2].forEach(c => result += countPackages(carriers, c))
+	return result
+    */
    }
    const carriers = [
     ['dapelu', 5, ['midu', 'jelowing']],
