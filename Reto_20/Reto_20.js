@@ -1,17 +1,16 @@
 function pangram(letter) {
     // ¡No olvides compartir tu solución en redes!
     let reg = /[a-zñ]/g
+    let valueReturned = true
 
     let newArr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"]
     let newStr = letter.toLowerCase().match(reg)
 
-    //console.log(newStr)
-    let value = true
 
     for(let i=0;i<newArr.length;i++){
-        if(newStr.indexOf(newArr[i])==-1){value= false}
+        if(newStr.indexOf(newArr[i])==-1){valueReturned= false}
     }
-   return value
+   return valueReturned
    }
 
 
