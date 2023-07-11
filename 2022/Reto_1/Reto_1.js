@@ -1,16 +1,23 @@
 function wrapping(gifts) {
 
 return  gifts.map((elem)=>{
-    const asterisco = "*"
+    const asterisk = "*"
 
         const newArr = elem.split("")
-    
-        const newStr = asterisco.repeat(elem.length+2)+"\n"+asterisco
-
+        const newStr = asterisk.repeat(elem.length+2) + "\n" + asterisk
         newArr.push(newStr.split("").reverse().join(""))
         newArr.unshift(newStr)
-        
         return newArr.join("")
+
+
+        //solucion optima
+        
+        /**
+         * return gifts.map(g => {
+		 *  const w = '*'.repeat(2 + g.length)
+		 *   return `${w}\n*${g}*\n${w}`
+	     *   })
+         */
         
 })
 
